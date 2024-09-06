@@ -30,6 +30,8 @@ export const MyProfile = () => {
         text_box: store.text_box,
         profile_img: store.profile_img,
     };
+
+
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 

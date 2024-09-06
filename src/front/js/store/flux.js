@@ -74,6 +74,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			signUp: async (formData) => {
 				try {
+					console.log('Backend URL:', process.env.BACKEND_URL);
+					console.log("Data:", formData);
 					const response = await fetch(process.env.BACKEND_URL + '/signup', {
 						method: "POST",
 						headers: {
@@ -93,36 +95,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getProfile: async () => {
 				const { token } = await getStore()
-					const response = await fetch(process.env.BACKEND_URL + '/user/profile', {
-						method: "GET",
-						headers: {
-							"Authorization": "Bearer " + token,
-							"Content-Type": "application/json"
-						}
-					});
-					try {
+				const response = await fetch(process.env.BACKEND_URL + '/user/profile', {
+					method: "GET",
+					headers: {
+						"Authorization": "Bearer " + token,
+						"Content-Type": "application/json"
+					}
+				});
+				try {
+
 					if (!response.ok) {
 						const data = await response.json();
 						throw new Error(data.message || "Error al obtener el perfil del usuario")
 					}
 
 					const userData = await response.json();
+					console.log(userData);
+
+					const properties = userData.properties || {};
 
 					setStore({
 						id: userData.id,
 						email: userData.email,
-						user_name: userData.user_name,
-						last_name: userData.last_name,
-						pet: userData.properties.pet,
-						gender: userData.properties.gender,
-						budget: userData.properties.budget,
-						find_roomie: userData.properties.find_roomie,
-						text_box: userData.properties.text_box,
-						profile_img: userData.properties.profile_img
+						user_name: userData.user_name || "",
+						last_name: userData.last_name || "",
+						pet: properties.pet || "",
+						gender: properties.gender || "",
+						budget: properties.budget || "",
+						find_roomie: properties.find_roomie || "",
+						text_box: properties.text_box || "",
+						profile_img: properties.profile_img || "",
 					});
-					console.log(userData)
 
-				 }catch (error) {
+					console.log(userData);
+
+				} catch (error) {
 					throw new Error("Error al obtener el perfil del usuario: " + error.message);
 				}
 			},
@@ -131,7 +138,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const { token } = await getStore();
 
 				try {
-					console.log(formData)
+					console.log("Datos enviados:", formData);
 					const response = await fetch(process.env.BACKEND_URL + '/user/properties', {
 						method: "POST",
 						headers: {
@@ -201,7 +208,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						throw new Error(responseData.error || 'Failed to delete user properties');
 					}
 
-					console.log(responseData.message); 
+					console.log(responseData.message);
 					setStore({
 						...getStore(),
 						pet: null,
@@ -305,7 +312,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 
 					const data = await response.json();
-					setStore({favoriteProfiles: data})
+					setStore({ favoriteProfiles: data })
 					return data;
 				} catch (error) {
 					console.error('Error al obtener perfiles favoritos:', error);
@@ -370,7 +377,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getUsersFilter: async (filters) => {
 				const { token } = await getStore();
-				
+
 				try {
 					// Obtener el valor del input user_name y last_name del estado o de donde sea que lo tengas almacenado
 					const { user_name, last_name, ...otherFilters } = filters;
@@ -380,10 +387,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (last_name) {
 						otherFilters.last_name = last_name;
 					}
-			
+
 					// Convertir los filtros restantes en una cadena de consulta
 					const queryString = new URLSearchParams(otherFilters).toString();
-				
+
 					// Realizar la solicitud GET al servidor con la cadena de consulta
 					const response = await fetch(`${process.env.BACKEND_URL}/users/filter?${queryString}`, {
 						method: 'GET',
@@ -391,25 +398,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 							"Authorization": "Bearer " + token,
 						}
 					});
-				
+
 					if (!response.ok) {
 						const data = await response.json();
 						throw new Error(data.error || 'Error al obtener usuarios filtrados');
 					}
-				
+
 					const filteredUsers = await response.json();
 					return filteredUsers;
-				
+
 				} catch (error) {
 					console.error('Error al obtener usuarios filtrados:', error);
 					throw error;
 				}
 			},
-			
-			
-			
-			
-			
+
+
+
+
+
 
 			getUserDetails: async () => {
 

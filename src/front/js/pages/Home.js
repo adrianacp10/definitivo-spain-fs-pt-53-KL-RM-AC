@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { Stack } from "@mui/material";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import videoPreview from "../../img/people2.mp4"
 
 export const Home = () => {
     const { store, actions } = useContext(Context);
@@ -22,7 +23,7 @@ export const Home = () => {
         <ThemeProvider theme={theme}>
             <div className="home">
                 <video autoPlay loop muted className="video-background">
-                    <source src="https://videocdn.cdnpk.net/excite/content/video/premium/partners0322/large_preview/103280_C0020_A.mp4?filename=5079165_watch_television_tv_1920x1080.mp4" type="video/mp4" />
+                    <source src={videoPreview} type="video/mp4" />
                 </video>
                 <div className="overlay"></div>
                 <div className="formulario-bienvenida">

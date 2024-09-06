@@ -23,6 +23,8 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 CORS(app)
 
+app.register_blueprint(api, url_prefix='/api')
+
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET')   # Change this "super secret" to something else!
 jwt = JWTManager(app)
 
@@ -47,7 +49,10 @@ setup_admin(app)
 setup_commands(app)
 
 # Add all endpoints form the API with a "api" prefix
-app.register_blueprint(api, url_prefix='/api')
+
+
+
+
 
 # Handle/serialize errors like a JSON object
 

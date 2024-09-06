@@ -67,7 +67,7 @@ export const CreateProfile = () => {
         setImage(image);
         const formDataImage = new FormData();
         formDataImage.append("file", image);
-        formDataImage.append("upload_preset", "injqzpue");
+        formDataImage.append("upload_preset", "wegw5toq");
         try {
             setUploadingImage(true); // Establece el estado de carga de la imagen a true
             const response = await fetch(process.env.BACKEND_URL_CLOUDINARY + 'image/upload',
@@ -123,12 +123,12 @@ export const CreateProfile = () => {
     if (loading) {
         return (
             <ThemeProvider theme={theme}>
-            <div className="spinner-container">
-                <div className="spinner">
-                    <CircularProgress color="primary"  />
+                <div className="spinner-container">
+                    <div className="spinner">
+                        <CircularProgress color="primary" />
+                    </div>
                 </div>
-            </div>
-        </ThemeProvider>
+            </ThemeProvider>
         );
     }
 
@@ -167,6 +167,7 @@ export const CreateProfile = () => {
                                     <div>
                                         <label className="form-label fw-bold">Que buscas?</label>
                                         <select className="form-select" name="find_roomie" value={formData.find_roomie} onChange={handleInputChange} aria-placeholder=" ">
+                                            <option value="">Selecciona una opción</option>
                                             <option value="Apartment">Tengo piso y busco roomie</option>
                                             <option value="NoApartment">Busco roomie con piso</option>
                                         </select>
@@ -198,7 +199,7 @@ export const CreateProfile = () => {
                                     <div>
                                         <label className="form-label fw-bold">Genero</label>
                                         <select className="form-select" name="gender" value={formData.gender} onChange={handleInputChange}>
-                                            <option value="">Selecciona te genero</option>
+                                            <option value="">Selecciona tu género</option>
                                             <option value="Female">Mujer</option>
                                             <option value="Male">Hombre</option>
                                         </select>

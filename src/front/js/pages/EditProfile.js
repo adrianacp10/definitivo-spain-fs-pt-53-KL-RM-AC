@@ -57,7 +57,7 @@ export const EditProfile = () => {
         setImage(image);
         const formDataImage = new FormData();
         formDataImage.append("file", image);
-        formDataImage.append("upload_preset", "injqzpue");
+        formDataImage.append("upload_preset", "wegw5toq");
 
         try {
             setUploadingImage(true);
@@ -105,91 +105,90 @@ export const EditProfile = () => {
 
     return (
         <ThemeProvider theme={theme}>
-                <div className="createProfile">
-                    <div className="createProfilePage mt-2 ">
-                        <form>
-                            <div className="row">
-                                <div className=" col-md-6 col-sm-12 mb-3 images">
-                                    <div className="profileImg">
-                                        {image ? (
-                                            <img src={URL.createObjectURL(image)} alt="Uploaded" className="uploaded-img" />
-                                        ) : (
-                                            <img src={formData.profile_img || "https://via.placeholder.com/150"} alt="Placeholder" className="placeholder-img" />
-                                        )}
-                                    </div>
-                                    <input
-                                        id="fileInput"
-                                        name="profile_img"
-                                        type="file"
-                                        hidden
-                                        onChange={handleNewImage}
-                                    />
-                                    <label htmlFor="fileInput" className="labelImg btn">
-                                    {uploadingImage ? <CircularProgress color="primary" /> : <CloudUploadIcon />}                                   
-                                    </label>
+            <div className="createProfile">
+                <div className="createProfilePage mt-2 ">
+                    <form>
+                        <div className="row">
+                            <div className=" col-md-6 col-sm-12 mb-3 images">
+                                <div className="profileImg">
+                                    {image ? (
+                                        <img src={URL.createObjectURL(image)} alt="Uploaded" className="uploaded-img" />
+                                    ) : (
+                                        <img src={formData.profile_img} alt="Placeholder" className="placeholder-img" />
+                                    )}
                                 </div>
-                                <div className="col-md-6 col-sm-12">
-                                    <h3 className="text-center">Editar Perfil</h3>
-                                    <hr />
-                                    <div className="nameCreateProfile mb-3">
-                                        <p><strong>Nombre:</strong> {formData.user_name} {formData.last_name}</p>
-                                    </div>
-                                    <div>
-                                        <label className="form-label fw-bold">Que buscas?</label>
-                                        <select className="form-select" name="find_roomie" value={formData.find_roomie} onChange={handleInputChange}>
-                                            <option value="">Que buscas?</option>
-                                            <option value="Apartment">Tengo piso y busco roomie</option>
-                                            <option value="NoApartment">Busco roomie con piso</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="form-label fw-bold">Presupuesto?</label>
-                                        <div className="input-group">
-                                            <span className="input-group-text presupuesto">€</span>
-                                            <input
-                                                type="number"
-                                                className="form-control presupuesto"
-                                                id="budget"
-                                                name="budget"
-                                                value={formData.budget}
-                                                onChange={handleInputChange}
-                                                inputMode="numeric" // Indica que es un campo numérico
-                                                aria-label="Presupuesto en euros"
-                                            />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <label className="form-label fw-bold">Tienes mascota</label>
-                                        <select className="form-select" name="pet" value={formData.pet} onChange={handleInputChange}>
-                                            <option value="">Tienes mascota?</option>
-                                            <option value="Yes">Si</option>
-                                            <option value="No">No</option>
-                                        </select>
-                                    </div>
-                                    <div>
-                                        <label className="form-label fw-bold">Genero</label>
-                                        <select className="form-select" name="gender" value={formData.gender} onChange={handleInputChange}>
-                                            <option value="">Selecciona te genero</option>
-                                            <option value="Female">Mujer</option>
-                                            <option value="Male">Hombre</option>
-                                        </select>
-                                    </div>
-                                    <label className="form-label fw-bold">Por que serias el compi ideal?</label>
-                                    <textarea className="form-control text" rows="2" value={formData.text_box} onChange={handleInputChange} name="text_box"></textarea>
-                                </div>
+                                <input
+                                    id="fileInput"
+                                    name="profile_img"
+                                    type="file"
+                                    hidden
+                                    onChange={handleNewImage}
+                                />
+                                <label htmlFor="fileInput" className="labelImg btn">
+                                    {uploadingImage ? <CircularProgress color="primary" /> : <CloudUploadIcon />}
+                                </label>
                             </div>
-                            <Stack direction="row" spacing={2} className="buttons">
-                                <Link to={"/profile"}>
-                                    <Button onClick={handleSubmit} type="submit" color="primary" variant="outlined" className="button">Guardar</Button>
-                                </Link>
-                                <CustomAlert open={open} onClose={handleClose} message={alertMessage} severity={alertMessage === "Perfil creado correctamente" ? "success" : "error"} />
-                                <Link to={"/password"}>
-                                    <Button type="button" color="primary" variant="outlined" className="button">Cambiar Contrasena</Button>
-                                </Link>
-                            </Stack>
-                        </form>
-                    </div>
+                            <div className="col-md-6 col-sm-12">
+                                <h3 className="text-center">Editar Perfil</h3>
+                                <hr />
+                                <div className="nameCreateProfile mb-3">
+                                    <p><strong>Nombre:</strong> {formData.user_name} {formData.last_name}</p>
+                                </div>
+                                <div>
+                                    <label className="form-label fw-bold">Que buscas?</label>
+                                    <select className="form-select" name="find_roomie" value={formData.find_roomie} onChange={handleInputChange}>
+                                        <option value="Apartment">Tengo piso y busco roomie</option>
+                                        <option value="NoApartment">Busco roomie con piso</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className="form-label fw-bold">Presupuesto?</label>
+                                    <div className="input-group">
+                                        <span className="input-group-text presupuesto">€</span>
+                                        <input
+                                            type="number"
+                                            className="form-control presupuesto"
+                                            id="budget"
+                                            name="budget"
+                                            value={formData.budget}
+                                            onChange={handleInputChange}
+                                            inputMode="numeric" // Indica que es un campo numérico
+                                            aria-label="Presupuesto en euros"
+                                        />
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="form-label fw-bold">Tienes mascota</label>
+                                    <select className="form-select" name="pet" value={formData.pet} onChange={handleInputChange}>
+                                        <option value="">Tienes mascota?</option>
+                                        <option value="Yes">Si</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className="form-label fw-bold">Genero</label>
+                                    <select className="form-select" name="gender" value={formData.gender} onChange={handleInputChange}>
+                                        <option value="">Selecciona te genero</option>
+                                        <option value="Female">Mujer</option>
+                                        <option value="Male">Hombre</option>
+                                    </select>
+                                </div>
+                                <label className="form-label fw-bold">Por que serias el compi ideal?</label>
+                                <textarea className="form-control text" rows="2" value={formData.text_box} onChange={handleInputChange} name="text_box"></textarea>
+                            </div>
+                        </div>
+                        <Stack direction="row" spacing={2} className="buttons">
+                            <Link to={"/profile"}>
+                                <Button onClick={handleSubmit} type="submit" color="primary" variant="outlined" className="button">Guardar</Button>
+                            </Link>
+                            <CustomAlert open={open} onClose={handleClose} message={alertMessage} severity={alertMessage === "Perfil creado correctamente" ? "success" : "error"} />
+                            <Link to={"/password"}>
+                                <Button type="button" color="primary" variant="outlined" className="button">Cambiar Contrasena</Button>
+                            </Link>
+                        </Stack>
+                    </form>
                 </div>
+            </div>
         </ThemeProvider >
     );
 };
