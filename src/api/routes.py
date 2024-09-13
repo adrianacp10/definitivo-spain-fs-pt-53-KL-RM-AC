@@ -266,7 +266,7 @@ def get_users_filter():
     if pet is not None and pet != "":
         filters.append(UserProperties.pet == pet)
     if gender is not None and gender != "":
-        filters.append(UserProperties.gender == gender)
+        filters.append(UserProperties.gender == gender)    
     if budget is not None and budget != "":
         if findroomie == 'Apartment':
             filters.append(UserProperties.budget <= budget)

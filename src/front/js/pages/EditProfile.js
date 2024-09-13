@@ -137,6 +137,7 @@ export const EditProfile = () => {
                                 <div>
                                     <label className="form-label fw-bold">Que buscas?</label>
                                     <select className="form-select" name="find_roomie" value={formData.find_roomie} onChange={handleInputChange}>
+                                        <option value="">Selecciona una opción</option>
                                         <option value="Apartment">Tengo piso y busco roomie</option>
                                         <option value="NoApartment">Busco roomie con piso</option>
                                     </select>

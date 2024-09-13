@@ -390,6 +390,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					// Convertir los filtros restantes en una cadena de consulta
 					const queryString = new URLSearchParams(otherFilters).toString();
+					console.log("QueryString final:", queryString);
 
 					// Realizar la solicitud GET al servidor con la cadena de consulta
 					const response = await fetch(`${process.env.BACKEND_URL}/users/filter?${queryString}`, {

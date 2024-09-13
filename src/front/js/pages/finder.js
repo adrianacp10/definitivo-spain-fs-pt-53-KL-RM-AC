@@ -184,6 +184,7 @@ export const Finder = () => {
                                                 type="text"
                                                 className="form-control"
                                                 value={lastName}
+                                                style={{ display: 'none' }}
                                                 onChange={(e) => setLastName(e.target.value)}
                                             />
                                         </div>

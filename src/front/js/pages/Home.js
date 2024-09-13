@@ -27,9 +27,9 @@ export const Home = () => {
                 </video>
                 <div className="overlay"></div>
                 <div className="formulario-bienvenida">
-                    <h2>Sabemos lo difícil que es encontrar un compi de piso ideal</h2>
+                    <h2>Sabemos lo difícil que es encontrar un compañero de piso ideal</h2>
                     <div className="textHome">
-                        <p>Por eso hemos creado una web donde podrás encontrar al compi que más encaje contigo</p>
+                        <p>Por eso hemos creado una web donde podrás encontrar a la persona que más encaje contigo</p>
                     </div>
                     <div className="buttonHome">
                         <Stack direction="row" spacing={2} justifyContent="center" alignItems="center" >
